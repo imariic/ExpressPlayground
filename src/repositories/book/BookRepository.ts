@@ -1,6 +1,6 @@
 import { Book } from "@prisma/client";
 import IBookRepository from "./IBookRepository";
-import db from "../../db";
+import db from "~/db";
 
 export default class BookRepository implements IBookRepository {
   async getAll(): Promise<Book[]> {
@@ -18,10 +18,11 @@ export default class BookRepository implements IBookRepository {
     return book;
   }
 
-  async insert(book: Book): Promise<void> {
-    console.log(book, "KNJIGA");
-    await db.book.create({
+  async insert(book: Book): Promise<Book> {
+    const insertedBook = await db.book.create({
       data: book,
     });
+
+    return insertedBook;
   }
 }

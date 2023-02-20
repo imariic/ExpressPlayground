@@ -1,5 +1,5 @@
 import { Book } from "@prisma/client";
-import IBookRepository from "../../repositories/book/IBookRepository";
+import { IBookRepository } from "~/repositories";
 import IBookService from "./IBookService";
 
 export default class BookService implements IBookService {
@@ -21,7 +21,9 @@ export default class BookService implements IBookService {
     return book;
   }
 
-  async insert(book: Book): Promise<void> {
-    return this._bookRepository.insert(book);
+  async insert(book: Book): Promise<Book> {
+    const insertedBook = await this._bookRepository.insert(book);
+
+    return insertedBook;
   }
 }
