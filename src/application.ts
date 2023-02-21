@@ -1,6 +1,7 @@
 import express, { Application as ExpressApplication } from "express";
 import cors from "cors";
 import bookRoutes from "./routes/BookRoutes";
+import { protect } from "~/auth";
 
 class Application {
   private readonly _instance: ExpressApplication;
@@ -10,7 +11,7 @@ class Application {
     this._instance.use(cors());
     this._instance.use(express.json());
     this._instance.use(express.urlencoded({ extended: true }));
-    this._instance.use(bookRoutes);
+    this._instance.use(protect, bookRoutes);
   }
 
   public getInstance(): ExpressApplication {
