@@ -24,6 +24,8 @@ model User {
   createdAt DateTime @default(now())
   firstName String
   lastName String
+  username String
+  password String
   books Book[]
   role Role @default(AUTHOR)
 }
