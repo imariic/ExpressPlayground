@@ -6,7 +6,8 @@
   "scripts": {
     "prepare": "npx ts-patch install -s",
     "dev": "ts-node src/index.ts",
-    "prisma-migrate": "npx prisma migrate dev"
+    "migrate": "npx prisma migrate dev",
+    "db": "npx prisma studio"
   },
   "keywords": [],
   "author": "Ivan Mariic",

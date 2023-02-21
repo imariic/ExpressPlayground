@@ -24,7 +24,7 @@ model User {
   createdAt DateTime @default(now())
   firstName String
   lastName String
-  username String
+  username String @unique
   password String
   books Book[]
   role Role @default(AUTHOR)
