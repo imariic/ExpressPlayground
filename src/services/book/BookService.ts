@@ -26,4 +26,10 @@ export default class BookService implements IBookService {
 
     return insertedBook;
   }
+
+  async delete(id: string): Promise<Book> {
+    const deletedBook = await this._bookRepository.delete(id);
+
+    return deletedBook;
+  }
 }

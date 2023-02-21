@@ -35,8 +35,19 @@ const getBookById = async (req: Request, res: Response) => {
   }
 };
 
+const deleteBook = async (req: Request, res: Response) => {
+  try {
+    const deletedBook = await bookService.delete(req.params.id);
+
+    res.json(deletedBook);
+  } catch (err) {
+    res.status(err.status);
+  }
+};
+
 export default {
   insertBook,
   getBooks,
   getBookById,
+  deleteBook,
 };

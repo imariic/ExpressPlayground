@@ -25,4 +25,14 @@ export default class BookRepository implements IBookRepository {
 
     return insertedBook;
   }
+
+  async delete(id: string): Promise<Book> {
+    const deletedBook = await db.book.delete({
+      where: {
+        id,
+      },
+    });
+
+    return deletedBook;
+  }
 }
