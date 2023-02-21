@@ -8,9 +8,9 @@ const userService = new UserService(userRepository);
 const login = async (req: Request, res: Response) => {
   try {
     const { username, password } = req.body;
-    const loggedInUser = await userService.login(username, password);
+    const token = await userService.login(username, password);
 
-    res.json(loggedInUser);
+    res.json(token);
   } catch (err) {
     res.status(err.status);
   }
@@ -18,9 +18,9 @@ const login = async (req: Request, res: Response) => {
 
 const register = async (req: Request, res: Response) => {
   try {
-    const registeredUser = await userService.register(req.body);
+    const token = await userService.register(req.body);
 
-    res.json(registeredUser);
+    res.json(token);
   } catch (err) {
     res.status(err.status);
   }
